@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: vahitbook
+  namespace: argocd
+spec: 
+  destination: 
+    namespace: vahitbook
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    path: vahitbook
+    repoURL: "https://github.com/vahitunal/argocd.git"
+    targetRevision: main
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
